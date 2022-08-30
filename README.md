@@ -22,6 +22,13 @@ It also has optional support for `gulp-babel`, but I'm currently not using
 any transcoding in my own apps as every *supported* browser supports modern
 Javascript/ECMAScript, so I'm not too worried about it.
 
+## Plans
+
+As I'm changing all of my old JS libraries into new `npm` modules which will
+overhaul how I work with JS in web apps entirely, version `2.0` of this will
+likely be a fairly big rewrite, and will move the package from `lum-gulp-helper`
+to the `@lumjs/gulp-helper` namespace.
+
 ## Official URLs
 
 This library can be found in two places:
