@@ -2,6 +2,9 @@
  * A helper for my project gulpfiles.
  */
 
+// My core library.
+const core = require('@lumjs/core');
+
 // Gulp is obviously always required.
 const gulp = require('gulp');
 
@@ -9,7 +12,10 @@ const gulp = require('gulp');
 const del  = require('del');
 
 // Some constants for type checks.
-const F = 'function', S = 'string', O = 'object';
+const {F,S,O,isObj} = core.types;
+
+// A helper function for object paths.
+const getObjPath = core.obj.getObjectPath;
 
 // Libraries that can be auto-loaded as required.
 const DEPS =
@@ -52,55 +58,6 @@ const DEFAULT_OPTS =
 
 // A shared instance of the GulpHelper class.
 let globalInstance = null;
-
-// Is the first argument a non-null, non-Array object?
-function isObj(what)
-{
-  return (what && typeof what === O && !Array.isArray(what));
-}
-
-// A dirty object merging thingy. Circular references not supported.
-// When lum-core moves to npm, we'll use `mergeNested` from it.
-function mergeObj(so, to)
-{
-  for (const p in so)
-  {
-    if (isObj(so[p]) && isObj(to[p]))
-    { // Both source and target properties are nested objects, merge them.
-      mergeObj(so[p], to[p]);
-    }
-    else
-    { // One or the other properties was not an object, use direct assignment.
-      to[p] = so[p];
-    }
-  }
-  return to;
-}
-
-// When lum-core moves to npm, we can use `getObjectPath` from it.
-// For now this abridged version works just fine.
-function getObjPath(obj, name, opts={})
-{
-  if (!isObj(obj))
-    throw new TypeError("obj must be a plain object");
-  if (typeof name !== S)
-    throw new TypeError("name must be a string");
-
-  const paths = name.split('.');
-
-  for (let p = 0; p < paths.length; p++)
-  {
-    const prop = paths[p];
-    if (obj[prop] === undefined)
-    { // We've come to the end of the road.
-      return opts.default;
-    }
-    obj = obj[prop];
-  }
-
-  // If we got here, obj should be the desired property.
-  return obj;
-}
 
 /**
  * A class to help with common gulp tasks.
@@ -206,7 +163,7 @@ class GulpHelper
   {
     if (!isObj(values))
       throw new TypeError("values must be a plain object");
-    mergeObj(values, this.opts);
+    core.obj.mergeNested(values, this.opts);
     return this;
   }
 

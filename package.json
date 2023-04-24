@@ -1,6 +1,6 @@
 {
-  "name": "lum-gulp-helper",
-  "version": "1.0.0",
+  "name": "@lumjs/gulp-helper",
+  "version": "2.0.0",
   "description": "Helper library for Lum gulpfiles",
   "license": "MIT",
   "repository":
@@ -9,6 +9,7 @@
     "url": "https://github.com/supernovus/lum.gulp-helper.js.git"
   },
   "dependencies": {
+    "@lumjs/core": "^1.0.0",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "del": "^6.0.0",
@@ -23,7 +24,7 @@
     "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-terser": "^2.1.0",
-    "gulp-transform": "^3.0.5",
+    "@lumjs/gulp-transform": "^3.1.0",
     "require-dir": "1.2.0",
     "sass": "^1.43.0"
   }
