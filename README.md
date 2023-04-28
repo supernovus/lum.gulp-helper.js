@@ -10,7 +10,7 @@ style files. Will continue to grow as my libraries are split up further.
 
 ## Description
 
-Most of my libraries and apps that use gulpfiles have a few very common
+Many of my libraries and apps that use gulpfiles have a few very common
 types of tasks/rules, and I figured if they're almost always the same,
 why continue to duplicate the functionality in multiple places.
 
@@ -22,45 +22,30 @@ It also has optional support for `gulp-babel`, but I'm currently not using
 any transcoding in my own apps as every *supported* browser supports modern
 Javascript/ECMAScript, so I'm not too worried about it.
 
+## Package Versions
+
+This package was originally published *before* I had introduced the `@lumjs`
+namespace for my `npm` packages, and used the `lum-gulp-helper` package name
+for the `1.x` branch.
+
+For the `2.x` branch, this has moved to the `@lumjs/gulp-helper` package name,
+and the [@lumjs/core] package is used, replacing any placeholder functions I'd
+used with proper library imports.
+
 ## Future Plans
 
-### 2.x Rewrite (2022-08-30)
-
-As I'm changing all of my old JS libraries into new `npm` modules which will
-overhaul how I work with JS in web apps entirely, version `2.0` of this will
-likely be a fairly big rewrite, and will move the package from `lum-gulp-helper`
-to the `@lumjs/gulp-helper` namespace.
-
-### Update (2023-02-03)
-
-I'm not currently sure if there is a future to this library.
-
-While I'm likely going to continue to use Gulp in some regard
-for my custom projects, there's no one-single path I'm using anymore,
-and with the new `@lumjs` libraries using Webpack instead of Gulp for their
-Javascript at the very least (I have not seen how well the multiple entry
-points and code-splitting works with CSS yet, so whether that moves to 
-Webpack or continues to use Gulp with the `gulp-sass` stream plugin is yet 
-to be seen.)
-
-Once I have finished porting all of the old `Lum.js` libraries into the
-`@lumjs` collection, I will start porting all of my personal and work web apps
-to the new libraries, and at that point will start to figure out if there's
-a place in the ecosystem for this library or not. 
-
-If I determine there is, I'll do the `2.x` rewrite I described above, although
-instead of a single helper library, I'll break it down into a collection of
-smaller components, so the different features can be mixed and matched for
-each specific web app's requirements.
-
-If I decide it's no longer needed, I will simply archive this repo.
+I am thinking at some point I will split the library up into standalone
+modules that can be used independently of each other, as well as offering
+some kind of integration with my [@lumjs/webpack-helper] library 
+to make Gulp and Webpack work together in cases where both may be required.
 
 ## Official URLs
 
-This library can be found in two places:
+This library can be found in three places:
 
  * [Github](https://github.com/supernovus/lum.gulp-helper.js)
- * [NPM](https://www.npmjs.com/package/lum-gulp-helper)
+ * [NPM, new package](https://www.npmjs.com/package/@lumjs/gulp-helper)
+ * [NPM, old package](https://www.npmjs.com/package/lum-gulp-helper)
 
 ## Author
 
@@ -69,3 +54,7 @@ Timothy Totten <2010@totten.ca>
 ## License
 
 [MIT](https://spdx.org/licenses/MIT.html)
+
+[@lumjs/core]: https://github.com/supernovus/lum.core.js
+[@lumjs/webpack-helper]: https://github.com/supernovus/lum.webpack-helper.js
+
