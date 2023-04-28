@@ -1,6 +1,6 @@
 {
   "name": "lum-gulp-helper",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Helper library for Lum gulpfiles (transitional package)",
   "license": "MIT",
   "repository":
